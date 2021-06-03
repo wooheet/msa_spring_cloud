@@ -50,9 +50,9 @@ management:
       exposure:
         include: refresh, health, beans, busrefresh, info, metrics, prometheus
 
-gateway:
-  ip: 192.168.170.160
-
-token:
-  expiration_time: 86400000
-  secret: user_token
+#gateway:
+#  ip: 192.168.170.160
+#
+#token:
+#  expiration_time: 86400000
+#  secret: user_token
