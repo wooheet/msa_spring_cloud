@@ -25,7 +25,7 @@ public class UserServiceApplication {
 	}
 
 	@Bean
-	@LoadBalanced
+	@LoadBalanced // discovery service에 등록된 microservice 이름으로 호출
 	public RestTemplate getRestTemplate() {
 		return new RestTemplate();
 	}
@@ -34,4 +34,9 @@ public class UserServiceApplication {
 	public Logger.Level feignLoggerLevel() {
 		return Logger.Level.FULL;
 	}
+
+//    @Bean
+//    public FeignErrorDecoder getFeignErrorDecoder() {
+//        return new FeignErrorDecoder();
+//    }
 }
