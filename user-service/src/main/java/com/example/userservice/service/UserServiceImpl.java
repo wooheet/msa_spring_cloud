@@ -78,9 +78,7 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(userEntity);
 
-        UserDto returnUserDto = mapper.map(userEntity, UserDto.class);
-
-        return returnUserDto;
+        return mapper.map(userEntity, UserDto.class);
     }
 
     @Override
@@ -114,7 +112,7 @@ public class UserServiceImpl implements UserService {
 //        List<ResponseOrder> ordersList = orderServiceClient.getOrders(userId);
 //        log.info("Before call orders microservice");
 
-        /* CircuitBreaker */
+        /* ErrorDecoder & CircuitBreaker */
         CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitbreaker");
         List<ResponseOrder> ordersList = circuitBreaker.run(() ->
                         orderServiceClient.getOrders(userId),
@@ -138,7 +136,6 @@ public class UserServiceImpl implements UserService {
         if (userEntity == null)
             throw new UsernameNotFoundException(email);
 
-        UserDto userDto = new ModelMapper().map(userEntity, UserDto.class);
-        return userDto;
+        return new ModelMapper().map(userEntity, UserDto.class);
     }
 }

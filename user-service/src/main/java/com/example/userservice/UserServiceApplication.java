@@ -35,6 +35,7 @@ public class UserServiceApplication {
 		return Logger.Level.FULL;
 	}
 
+//    Component 등록으로 변
 //    @Bean
 //    public FeignErrorDecoder getFeignErrorDecoder() {
 //        return new FeignErrorDecoder();
