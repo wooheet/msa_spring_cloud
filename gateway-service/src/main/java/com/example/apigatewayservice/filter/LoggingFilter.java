@@ -20,21 +20,6 @@ public class LoggingFilter extends AbstractGatewayFilterFactory<LoggingFilter.Co
 
     @Override
     public GatewayFilter apply(Config config) {
-//        return ((exchange, chain) -> {
-//            ServerHttpRequest request = exchange.getRequest();
-//            ServerHttpResponse response = exchange.getResponse();
-//
-//            log.info("Global Filter baseMessage: {}", config.getBaseMessage());
-//            if (config.isPreLogger()) {
-//                log.info("Global Filter Start: request id -> {}", request.getId());
-//            }
-//            return chain.filter(exchange).then(Mono.fromRunnable(()->{
-//                if (config.isPostLogger()) {
-//                    log.info("Global Filter End: response code -> {}", response.getStatusCode());
-//                }
-//            }));
-//        });
-
         return new OrderedGatewayFilter((exchange, chain) -> {
             ServerHttpRequest request = exchange.getRequest();
             ServerHttpResponse response = exchange.getResponse();

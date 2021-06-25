@@ -4,6 +4,17 @@ server:
 spring:
   application:
     name: my-first-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+      path: /h2-console
 
 eureka:
   client:
@@ -12,4 +23,8 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
   instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}} # eureka 목록에 하나밖에 등록되지 않기 때문에 instance id를 랜덤으로 부
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+logging:
+  level:
+    com.example.userservice.client: DEBUG

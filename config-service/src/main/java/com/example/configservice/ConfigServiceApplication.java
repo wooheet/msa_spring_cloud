@@ -15,7 +15,7 @@ public class ConfigServiceApplication {
 		SpringApplication.run(ConfigServiceApplication.class, args);
 
 		Properties props = System.getProperties();
-		for(Enumeration en = props.propertyNames(); en.hasMoreElements();) {
+		for(Enumeration<?> en = props.propertyNames(); en.hasMoreElements();) {
 			String key = (String)en.nextElement();
 			String value = props.getProperty(key);
 			System.out.println(key + "=" + value);

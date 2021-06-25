@@ -21,6 +21,14 @@ public class SecondServiceController {
         this.env = env;
     }
 
+    @GetMapping("/health_check")
+    public String status() {
+        return "It's Working in Second Service"
+                + ", port(local.server.port)=" + env.getProperty("local.server.port")
+                + ", port(server.port)=" + env.getProperty("server.port")
+                + ", config test=" + env.getProperty("test.text");
+    }
+
     @GetMapping("/welcome")
     public String welcome() {
         return "Welcome to the Second service.";
@@ -36,7 +44,7 @@ public class SecondServiceController {
     public String check(HttpServletRequest request) {
         log.info("Server port={}", request.getServerPort());
 
-        return String.format("Hi, there. This is a message from First Service on PORT %s"
+        return String.format("Hi, there. This is a message from Second Service on PORT %s"
                 , env.getProperty("local.server.port"));
     }
 }
